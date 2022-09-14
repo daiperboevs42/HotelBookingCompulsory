@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HotelBooking.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelBooking.Infrastructure.Repositories
 {
@@ -16,17 +17,20 @@ namespace HotelBooking.Infrastructure.Repositories
 
         public void Add(Customer entity)
         {
-            throw new NotImplementedException();
+            db.Customer.Add(entity);
+            db.SaveChanges();
+            
         }
 
         public void Edit(Customer entity)
         {
-            throw new NotImplementedException();
+            db.Entry(entity).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         public Customer Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Customer.Include(c=> c.Name).Include(c => c.Email).FirstOrDefault(c => c.Id == id);
         }
 
         public IEnumerable<Customer> GetAll()
@@ -36,7 +40,9 @@ namespace HotelBooking.Infrastructure.Repositories
 
         public void Remove(int id)
         {
-            throw new NotImplementedException();
+            var customer = db.Customer.FirstOrDefault(c => c.Id == id);
+            db.Customer.Remove(customer);
+            db.SaveChanges();
         }
     }
 }
