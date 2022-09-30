@@ -82,8 +82,8 @@ namespace HotelBooking.UnitTests
         public void Delete_WhenIdIsLargerThanZero_RemoveIsCalled()
         {
             // Act
-            controller.
-                (1);
+            controller.Delete(1);
+                
 
             // Assert against the mock object
             fakeCustomerRepository.Verify(x => x.Remove(1), Times.Once);
