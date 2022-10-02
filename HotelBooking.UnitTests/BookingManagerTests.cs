@@ -51,7 +51,8 @@ namespace HotelBooking.UnitTests
         {
             var bookingManager = new BookingManager(_mockBookingRepo.Object, _mockRoomRepo.Object);
             var action = new Action(() => new BookingManager(null, null));
-            throw new NullReferenceException("Require a Repo");
+            Assert.Throws<NullReferenceException>(action);
+            //throw new NullReferenceException("Require a Repo");
 
             //Action action = () => new BookingManager(null, null);
             //Throw<NullReferenceException>().WithMessage("Requires a Repo");
@@ -95,6 +96,24 @@ namespace HotelBooking.UnitTests
 
             //Assert
             Assert.False(isCreated);
+
+        }
+        [Fact]
+        public void CreateBooking_CorrectStartDate_ReturnTrue()
+        {
+            //Arrange
+            Booking newBooking = new()
+            {
+                StartDate = DateTime.Today.AddDays(1),
+                EndDate = DateTime.Today.AddDays(2)
+            };
+
+            //Act
+            bool isCreated = bookingManager.CreateBooking(newBooking);
+
+            //assert
+            Assert.True(isCreated);
+
 
 
         }
