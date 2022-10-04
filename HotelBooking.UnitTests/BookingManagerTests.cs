@@ -82,20 +82,6 @@ namespace HotelBooking.UnitTests
 
 
         [Fact]
-        public void BookingManager_WithNullRepo_ShouldThrowException()
-        {
-            var bookingManager = new BookingManager(_mockBookingRepo.Object, _mockRoomRepo.Object);
-            var action = new Action(() => new BookingManager(null, null));
-            Assert.Throws<NullReferenceException>(action);
-            //throw new NullReferenceException("Require a Repo");
-
-            //Action action = () => new BookingManager(null, null);
-            //Throw<NullReferenceException>().WithMessage("Requires a Repo");
-
-        }
-
-
-        [Fact]
         public void FullyOccupiedDates_StartDateIsLaterThanEndDate_ThrowArgumentException()
         {
             //Arrange
@@ -137,7 +123,6 @@ namespace HotelBooking.UnitTests
         public void CreateBooking_CorrectStartDate_ReturnTrue()
         {
             //Arrange
-            var bookingManager = new BookingManager(_mockBookingRepo.Object, _mockRoomRepo.Object);
             Booking newBooking = new()
             {
                 StartDate = DateTime.Today.AddDays(1),
