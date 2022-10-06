@@ -142,6 +142,18 @@ namespace HotelBookingUnitTests
 
 
         }
+        [Theory]
+        [InlineData(2, 1)]
+        [InlineData(-1, 3)]
+        public void FindAvailableRoom_RoomNotAvailable_InvalidInputData(int startDate, int endDate)
+        {
+            // Arrange
+            var bookingManager = new BookingManager(_mockBookingRepo.Object, _mockRoomRepo.Object);
+            // Act
+            Action act = () => bookingManager.FindAvailableRoom(DateTime.Today.AddDays(startDate), DateTime.Today.AddDays(endDate));
+            // Assert
+            Assert.Throws<ArgumentException>(act);
+        }
 
     }
 }
