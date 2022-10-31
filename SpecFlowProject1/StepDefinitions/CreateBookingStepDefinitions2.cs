@@ -6,7 +6,7 @@ namespace SpecFlowProject1.StepDefinitions
     [Binding]
     public sealed class CreateBookingStepDefinitions2
     {
-        DateTime StartDate, EndDate;
+        DateTime startDate, endDate;
         bool Available;
         private readonly IBookingManager _bookingManager;
 
@@ -16,36 +16,40 @@ namespace SpecFlowProject1.StepDefinitions
 
         }
 
-        [Given(@"i have entered a (.*)")]
-        public void GivenIHaveEnteredA(string startDate)
+        [Given(@"i have entered a start Date")]
+        public void GivenIHaveEnteredA()
         {
-            
             //StartDate = startDate;
-            StartDate = DateTime.Parse(startDate);
-
+            //StartDate = DateTime.Parse(startDate);
+            startDate = DateTime.Today.AddDays(25);
         }
 
-        [Given(@"i have also entered a (.*)")]
-        public void GivenIHaveAlsoEnteredA(string endDate)
+        [Given(@"i have also entered a end Date")]
+        public void GivenIHaveAlsoEnteredA()
         {
-
             //EndDate = endDate;
-            EndDate = DateTime.Parse(endDate);
-
+            //EndDate = DateTime.Parse(endDate);
+            endDate = DateTime.Today.AddDays(30);
         }
 
         
         [When(@"i press book")]
         public void WhenIPressBook()
         {
-
-           Available = _bookingManager.CreateBooking(new Booking() { Id = 1, StartDate = StartDate , EndDate = EndDate, IsActive = true });
+            
+            Available = _bookingManager.CreateBooking(new Booking()
+            {
+                CustomerId = 2,
+                StartDate = startDate,
+                EndDate = endDate
+            });
         }
 
-        [Then(@"the booking should succeed or fail(.*)")]
-        public void ThenTheBookingShouldSucceedOrFail(bool available)
+        [Then(@"the booking should succeed or fail")]
+        public void ThenTheBookingShouldSucceedOrFail()
         {
-            Assert.Equal(Available, available);
+            //Assert.Equal(Available, true);
+            Assert.True(Available);
         }
        
     }
