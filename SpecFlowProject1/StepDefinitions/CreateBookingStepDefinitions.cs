@@ -9,16 +9,16 @@ namespace SpecFlowProject1.StepDefinitions
     {
         DateTime startDateVar, endDateVar;
         bool Available;
-        private readonly ScenarioContext _scenarioContext;
+        //private readonly ScenarioContext _scenarioContext;
         private readonly Mock<IRepository<Booking>> _bookingRepository = new();
         private readonly Mock<IRepository<Room>> _roomRepository = new();
         private readonly IBookingManager _bookingManager;
         public static int _startOccupiedDay = 5;
         public static int _endOccupiedDay = 10;
 
-        public CreateBookingStepDefinitions(ScenarioContext scenarioContext)
+        public CreateBookingStepDefinitions()
         {
-            _scenarioContext = scenarioContext;
+            //_scenarioContext = scenarioContext;
             DateTime startOccupiedDate = DateTime.Now.AddDays(_startOccupiedDay);
             DateTime endOccupiedDate = DateTime.Now.AddDays(_endOccupiedDay).AddHours(1);
 
@@ -48,17 +48,13 @@ namespace SpecFlowProject1.StepDefinitions
         [Given(@"i have entered a (.*)")]
         public void GivenIHaveEnteredA(int startDate)
         {
-            //StartDate = startDate;
             startDateVar = DateTime.Today.AddDays(startDate);
-            //startDate = DateTime.Today.AddDays(25);
         }
 
         [Given(@"i have also entered a (.*)")]
         public void GivenIHaveAlsoEnteredA(int endDate)
         {
-            //EndDate = endDate;
             endDateVar = DateTime.Today.AddDays(endDate);
-            //endDate = DateTime.Today.AddDays(30);
         }
 
         
@@ -77,7 +73,6 @@ namespace SpecFlowProject1.StepDefinitions
         [Then(@"the booking should succeed or fail (.*)")]
         public void ThenTheBookingShouldSucceedOrFail(bool available)
         {
-            //Assert.Equal(Available, true);
             Assert.Equal(Available, available);
         }
        
