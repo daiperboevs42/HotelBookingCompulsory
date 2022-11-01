@@ -81,13 +81,13 @@ namespace SpecFlowProject1.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableTheoryAttribute(DisplayName="Book a Room")]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Book a room with valid dates after occupied timeframe")]
         [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
-        [Xunit.TraitAttribute("Description", "Book a Room")]
+        [Xunit.TraitAttribute("Description", "Book a room with valid dates after occupied timeframe")]
         [Xunit.TraitAttribute("Category", "mytag")]
         [Xunit.InlineDataAttribute("25", "30", "true", new string[0])]
-        [Xunit.InlineDataAttribute("5", "10", "false", new string[0])]
-        public virtual void BookARoom(string startDate, string endDate, string available, string[] exampleTags)
+        [Xunit.InlineDataAttribute("11", "15", "true", new string[0])]
+        public virtual void BookARoomWithValidDatesAfterOccupiedTimeframe(string startDate, string endDate, string available, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "mytag"};
@@ -100,7 +100,7 @@ namespace SpecFlowProject1.Features
             argumentsOfScenario.Add("startDate", startDate);
             argumentsOfScenario.Add("endDate", endDate);
             argumentsOfScenario.Add("available", available);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book a Room", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book a room with valid dates after occupied timeframe", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 9
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -131,6 +131,174 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("i press book", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
+ testRunner.Then(string.Format("the booking should succeed or fail {0}", available), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Book a room with valid dates before occupied timeframe")]
+        [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
+        [Xunit.TraitAttribute("Description", "Book a room with valid dates before occupied timeframe")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        [Xunit.InlineDataAttribute("1", "4", "true", new string[0])]
+        [Xunit.InlineDataAttribute("2", "3", "true", new string[0])]
+        public virtual void BookARoomWithValidDatesBeforeOccupiedTimeframe(string startDate, string endDate, string available, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "mytag"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("startDate", startDate);
+            argumentsOfScenario.Add("endDate", endDate);
+            argumentsOfScenario.Add("available", available);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book a room with valid dates before occupied timeframe", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 22
+ testRunner.Given(string.Format("i have entered a {0}", startDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 23
+ testRunner.And(string.Format("i have also entered a {0}", endDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 24
+ testRunner.When("i press book", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 25
+ testRunner.Then(string.Format("the booking should succeed or fail {0}", available), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Book a room with both dates in occupied timeframe")]
+        [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
+        [Xunit.TraitAttribute("Description", "Book a room with both dates in occupied timeframe")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        [Xunit.InlineDataAttribute("5", "10", "false", new string[0])]
+        [Xunit.InlineDataAttribute("6", "9", "false", new string[0])]
+        public virtual void BookARoomWithBothDatesInOccupiedTimeframe(string startDate, string endDate, string available, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "mytag"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("startDate", startDate);
+            argumentsOfScenario.Add("endDate", endDate);
+            argumentsOfScenario.Add("available", available);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book a room with both dates in occupied timeframe", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 33
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 34
+testRunner.Given(string.Format("i have entered a {0}", startDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 35
+ testRunner.And(string.Format("i have also entered a {0}", endDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 36
+ testRunner.When("i press book", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 37
+ testRunner.Then(string.Format("the booking should succeed or fail {0}", available), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Book a room with one date within occupied days and one in unoccupied days")]
+        [Xunit.TraitAttribute("FeatureTitle", "CreateBooking")]
+        [Xunit.TraitAttribute("Description", "Book a room with one date within occupied days and one in unoccupied days")]
+        [Xunit.TraitAttribute("Category", "mytag")]
+        [Xunit.InlineDataAttribute("2", "7", "false", new string[0])]
+        [Xunit.InlineDataAttribute("8", "14", "false", new string[0])]
+        public virtual void BookARoomWithOneDateWithinOccupiedDaysAndOneInUnoccupiedDays(string startDate, string endDate, string available, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "mytag"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("startDate", startDate);
+            argumentsOfScenario.Add("endDate", endDate);
+            argumentsOfScenario.Add("available", available);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Book a room with one date within occupied days and one in unoccupied days", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 45
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 46
+testRunner.Given(string.Format("i have entered a {0}", startDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 47
+ testRunner.And(string.Format("i have also entered a {0}", endDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 48
+ testRunner.When("i press book", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 49
  testRunner.Then(string.Format("the booking should succeed or fail {0}", available), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

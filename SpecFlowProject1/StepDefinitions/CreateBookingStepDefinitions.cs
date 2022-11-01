@@ -9,7 +9,7 @@ namespace SpecFlowProject1.StepDefinitions
     {
         DateTime startDateVar, endDateVar;
         bool Available;
-        //private readonly ScenarioContext _scenarioContext;
+
         private readonly Mock<IRepository<Booking>> _bookingRepository = new();
         private readonly Mock<IRepository<Room>> _roomRepository = new();
         private readonly IBookingManager _bookingManager;
@@ -18,9 +18,8 @@ namespace SpecFlowProject1.StepDefinitions
 
         public CreateBookingStepDefinitions()
         {
-            //_scenarioContext = scenarioContext;
-            DateTime startOccupiedDate = DateTime.Now.AddDays(_startOccupiedDay);
-            DateTime endOccupiedDate = DateTime.Now.AddDays(_endOccupiedDay).AddHours(1);
+            DateTime startOccupiedDate = DateTime.Today.AddDays(_startOccupiedDay);
+            DateTime endOccupiedDate = DateTime.Today.AddDays(_endOccupiedDay);
 
             //Create Mock data
             Booking[] activeBookings = new Booking[3]
