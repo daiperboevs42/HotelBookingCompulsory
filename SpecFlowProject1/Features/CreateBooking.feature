@@ -7,12 +7,12 @@ A short summary of the feature
 
 @mytag
 Scenario: Book a Room
-	Given i have entered a start Date
-	And i have also entered a end Date
+	Given i have entered a <startDate>
+	And i have also entered a <endDate>
 	When i press book 
-	Then the booking should succeed or fail
+	Then the booking should succeed or fail <available>
 
-	#Examples: 
-	#| available |
-	#| true |
-	##| false |
+	Examples: 
+	| startDate | endDate | available |
+	| 25        | 30      | true      |
+	| 5         | 10      | false     |

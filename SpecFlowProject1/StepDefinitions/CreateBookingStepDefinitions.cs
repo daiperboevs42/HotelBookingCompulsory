@@ -7,7 +7,7 @@ namespace SpecFlowProject1.StepDefinitions
     [Binding]
     public sealed class CreateBookingStepDefinitions
     {
-        DateTime startDate, endDate;
+        DateTime startDateVar, endDateVar;
         bool Available;
         private readonly ScenarioContext _scenarioContext;
         private readonly Mock<IRepository<Booking>> _bookingRepository = new();
@@ -45,20 +45,20 @@ namespace SpecFlowProject1.StepDefinitions
         }
 
 
-        [Given(@"i have entered a start Date")]
-        public void GivenIHaveEnteredA()
+        [Given(@"i have entered a (.*)")]
+        public void GivenIHaveEnteredA(int startDate)
         {
             //StartDate = startDate;
-            //StartDate = DateTime.Parse(startDate);
-            startDate = DateTime.Today.AddDays(25);
+            startDateVar = DateTime.Today.AddDays(startDate);
+            //startDate = DateTime.Today.AddDays(25);
         }
 
-        [Given(@"i have also entered a end Date")]
-        public void GivenIHaveAlsoEnteredA()
+        [Given(@"i have also entered a (.*)")]
+        public void GivenIHaveAlsoEnteredA(int endDate)
         {
             //EndDate = endDate;
-            //EndDate = DateTime.Parse(endDate);
-            endDate = DateTime.Today.AddDays(30);
+            endDateVar = DateTime.Today.AddDays(endDate);
+            //endDate = DateTime.Today.AddDays(30);
         }
 
         
@@ -69,16 +69,16 @@ namespace SpecFlowProject1.StepDefinitions
             Available = _bookingManager.CreateBooking(new Booking()
             {
                 CustomerId = 2,
-                StartDate = startDate,
-                EndDate = endDate
+                StartDate = startDateVar,
+                EndDate = endDateVar
             });
         }
 
-        [Then(@"the booking should succeed or fail")]
-        public void ThenTheBookingShouldSucceedOrFail()
+        [Then(@"the booking should succeed or fail (.*)")]
+        public void ThenTheBookingShouldSucceedOrFail(bool available)
         {
             //Assert.Equal(Available, true);
-            Assert.True(Available);
+            Assert.Equal(Available, available);
         }
        
     }
