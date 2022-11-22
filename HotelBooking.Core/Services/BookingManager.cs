@@ -36,6 +36,12 @@ namespace HotelBooking.Core
 
         public int FindAvailableRoom(DateTime startDate, DateTime endDate)
         {
+            //Cyclomatic Complexity: 8
+            //foreach-loop: 1
+            //if-statements: 2
+            //Logical expressions:
+            //First-statement: 2-1: 1
+            //Second statement:5-1: 4
             if (startDate <= DateTime.Today || startDate > endDate)
                 throw new ArgumentException("The start date cannot be in the past or later than the end date.");
 
@@ -54,6 +60,13 @@ namespace HotelBooking.Core
 
         public List<DateTime> GetFullyOccupiedDates(DateTime startDate, DateTime endDate)
         {
+            //Cyclomatic Complexity: 7 (6)
+            //for-loop: 1
+            //if-statements: 3
+            //Logical expressions:
+            //First-statement: 1-1: 0
+            //Second statement:3-1: 2
+            //Third statement: 1-1: 0
             if (startDate > endDate)
                 throw new ArgumentException("The start date cannot be later than the end date.");
 
