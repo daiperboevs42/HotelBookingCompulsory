@@ -65,7 +65,7 @@ namespace HotelBooking.Core
             //if-statements: 3
             //Logical expressions:
             //First-statement: 1-1: 0
-            //Second statement:3-1: 2
+            //Second statement:3-1: 3
             //Third statement: 1-1: 0
             if (startDate > endDate)
                 throw new ArgumentException("The start date cannot be later than the end date.");
